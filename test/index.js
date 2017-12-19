@@ -1,4 +1,4 @@
-import ellipsis from '../src/index';
+import ellipsis from '../dist/ellipsis.js';
 
 ellipsis.config({
     lineNum: 3,

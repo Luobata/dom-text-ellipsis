@@ -17,16 +17,16 @@ module.exports = {
     name: 'projectName',
     sourcemap: true,
     output: {
-        file: 'dist/bundle.js',
+        file: 'dist/ellipsis.js',
         format: 'umd'
     },
     plugins: [
         // uglify(),
-        serve({
-            open: true,
-            contentBase: '',
-            port: port
-        }),
+        //serve({
+        //    open: true,
+        //    contentBase: '',
+        //    port: port
+        //}),
         // livereload(),
         resolve(),
         flow(
