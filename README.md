@@ -11,7 +11,7 @@ npm install --save-dev dom-text-ellipsis
 ```
 
 ## Link
-If you are using Vue, use the package [vue-text-ellipsis](https://github.com/Luobata/text-ellipsis-core) instead.
+If you are using Vue, use the package [vue-text-ellipsis](https://github.com/Luobata/vue-text-ellipsis) instead.
 
 ## Usage
 ```js
