@@ -1,5 +1,5 @@
 export const userConfig = {
-    //width: '50px',
+    // width: '50px',
     lineNum: 2,
     fontFamily: 'MicrosoftYahei',
     fontWeight: 'bold',

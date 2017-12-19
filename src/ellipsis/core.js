@@ -46,7 +46,7 @@ const appendDom = (dom, textArr, conf) => {
 const lint = (dom) => {
     const text = dom.getAttribute('text');
     if (text === null) {
-        throw `The text missed!`;
+        throw new Error('The text missed!');
     }
 };
 
@@ -66,7 +66,7 @@ const ellipsisCore = (dom) => {
     const conf = format(dom);
 
     if (conf.resize === true || conf.resize === 'true') {
-        window.addEventListener('resize', (e) => {
+        window.addEventListener('resize', () => {
             format(dom);
         });
     }
