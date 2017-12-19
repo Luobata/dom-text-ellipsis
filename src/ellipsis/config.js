@@ -5,6 +5,7 @@ export const userConfig = {
     fontWeight: 'bold',
     fontSize: '14px',
     left: '...',
+    tagName: 'p',
 };
 
 export const config = (conf) => {
