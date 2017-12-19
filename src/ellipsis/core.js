@@ -3,7 +3,7 @@ import { userConfig } from './config';
 
 const getConfig = (dom) => {
     const conf = Object.assign({}, userConfig);
-    conf.text = dom.getAttribute('text') || dom.innerText;
+    conf.text = dom.getAttribute('text');
     conf.lineNum = dom.getAttribute('lineNum') || conf.lineNum;
     conf.fontFamily = dom.getAttribute('fontFamily') || conf.fontFamily;
     conf.fontSize = dom.getAttribute('fontSize') || conf.fontSize;
@@ -11,6 +11,8 @@ const getConfig = (dom) => {
     conf.left = dom.getAttribute('left') || conf.left;
     conf.tagName = dom.getAttribute('tagName') || conf.tagName;
     conf.width = dom.getAttribute('width') || getComputedStyle(dom.parentElement).width;
+    conf.resize = dom.getAttribute('resize') || conf.resize;
+
 
     return conf;
 };
@@ -41,11 +43,32 @@ const appendDom = (dom, textArr, conf) => {
     dom.innerHTML = div.innerHTML;
 };
 
-export default (dom) => {
+const lint = (dom) => {
+    const text = dom.getAttribute('text');
+    if (text === null) {
+        throw `The text missed!`;
+    }
+};
+
+const format = (dom) => {
+    lint(dom);
     const conf = getConfig(dom);
     const span = init(conf);
     const textArr = core(conf, span);
     appendDom(dom, textArr, conf);
 
     destory(span);
+
+    return conf;
 };
+
+const ellipsisCore = (dom) => {
+    const conf = format(dom);
+
+    if (conf.resize === true || conf.resize === 'true') {
+        window.addEventListener('resize', (e) => {
+            format(dom);
+        });
+    }
+};
+export default ellipsisCore;

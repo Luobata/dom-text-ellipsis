@@ -8,4 +8,4 @@ ellipsis.config({
 const ell = document.getElementById('ell');
 const ells = document.querySelectorAll('.ell');
 
-ellipsis.init(ells);
+ellipsis.watch(ells);
