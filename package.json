@@ -55,6 +55,6 @@
   },
   "homepage": "https://github.com/Luobata/dom-text-ellipsis#readme",
   "dependencies": {
-    "text-ellipsis-core": "0.0.1"
+    "text-ellipsis-core": "0.0.3"
   }
 }

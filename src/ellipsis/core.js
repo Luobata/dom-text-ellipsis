@@ -4,6 +4,13 @@ import { userConfig } from './config';
 const getConfig = (dom) => {
     const conf = Object.assign({}, userConfig);
     conf.text = dom.getAttribute('text') || dom.innerText;
+    conf.lineNum = dom.getAttribute('lineNum') || conf.lineNum;
+    conf.fontFamily = dom.getAttribute('fontFamily') || conf.fontFamily;
+    conf.fontSize = dom.getAttribute('fontSize') || conf.fontSize;
+    conf.fontWeight = dom.getAttribute('fontWeight') || conf.fontWeight;
+    conf.left = dom.getAttribute('left') || conf.left;
+    conf.tagName = dom.getAttribute('tagName') || conf.tagName;
+    conf.width = dom.getAttribute('width') || getComputedStyle(dom.parentElement).width;
 
     return conf;
 };
