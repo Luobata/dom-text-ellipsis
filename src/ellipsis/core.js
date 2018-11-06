@@ -50,10 +50,55 @@ const lint = (dom) => {
     }
 };
 
+const cssHack = (span, dom, conf) => {
+    span.innerText = 'M';
+    conf.lineHeight = span.offsetHeight;
+    const wrap = document.createElement('div');
+    const text = document.createElement('div');
+    const before = document.createElement('div');
+    const after = document.createElement('div');
+    const margin = 5;
+
+    wrap.style.height = `${conf.lineHeight * conf.lineNum}px`;
+    wrap.style.lineHeight = `${conf.lineHeight}px`;
+    wrap.style.overflow = 'hidden';
+
+    before.style.float = 'left';
+    before.style.width = `${margin}px`;
+    before.style.height = `${conf.lineHeight * conf.lineNum}px`;
+
+    after.style.float = 'right';
+    after.style.height = `${conf.lineHeight}px`;
+    after.style.lineHeight = `${conf.lineHeight}px`;
+    after.style.width = '3em';
+    after.style.marginLeft = '-3em';
+    after.style.position = 'relative';
+    after.style.left = '100%';
+    after.style.top = `-${conf.lineHeight}px`;
+    after.style.paddingRight = `${margin}px`;
+    // after.style.fontWeight = 'bold';
+    after.style.background = 'white';
+    after.innerText = conf.left;
+
+    text.style.float = 'right';
+    text.style.marginLeft = `-${margin}px`;
+    text.style.width = '100%';
+    text.style.wordBreak = 'break-all';
+    text.innerText = conf.text;
+
+    wrap.appendChild(before);
+    wrap.appendChild(text);
+    wrap.appendChild(after);
+    dom.appendChild(wrap);
+
+    return wrap;
+};
+
 const format = (dom) => {
     lint(dom);
     const conf = getConfig(dom);
     const span = init(conf);
+    cssHack(span, dom, conf);
     const textArr = core(conf, span);
     appendDom(dom, textArr, conf);
 
